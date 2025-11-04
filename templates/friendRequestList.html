@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friend Request List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+          crossorigin="anonymous">
+</head>
+<body class="bg-light">
+
+    {% include 'nav.html' %}
+
+    <div class="container py-5">
+        <div class="card shadow-sm border-0 rounded-3">
+            <div class="card-header bg-primary text-white text-center">
+                <h4 class="mb-0">Friend Request List</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-bordered table-hover align-middle">
+                    <caption class="text-muted">List of Users</caption>
+                    <thead class="table-dark text-center">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Requested By</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        {% for f in friend_requests %}
+                        <tr class="table-info text-center">
+                            <td>{{ f.id }}</td>
+                            <td>{{ f.requested_by_user }}</td>
+                            <td>{{ f.status }}</td>
+                            <td>
+                                <a href="{% url 'friend_request_status_update' pk=f.id %}" class="btn btn-warning btn-sm">Edit</a>
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ f.id }}">
+                                    Delete
+                                </button>
+
+                                <div class="modal fade" id="deleteModal{{ f.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ f.id }}" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-danger text-white">
+                                                <h1 class="modal-title fs-5" id="deleteModalLabel{{ f.id }}">Confirm Delete</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete this record? This action cannot be undone.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <a href="{% url 'friend_request_delete' pk=f.id %}" class="btn btn-danger">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" 
+            crossorigin="anonymous"></script>
+</body>
+</html>
