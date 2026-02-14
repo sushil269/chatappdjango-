@@ -1,10 +1,10 @@
 # Social Real-time Chat & Networking Engine
 A Django-powered communication platform featuring a complete social ecosystem, including user authentication, friend management, and real-time messaging.
 
-## 📌 Project Overview
+## Project Overview
 This project was engineered to explore the complexities of relational user data and real-time interaction. Beyond simple messaging, it implements a full "Social Graph" where users can manage their digital connections and communicate securely.
 
-## 🚀 Technical Features
+## Technical Features
 
 ### 1. Social Relationship Management (Friendship Logic)
 Implemented a robust "Friend Request" system that handles complex states:
@@ -20,7 +20,7 @@ Implemented a robust "Friend Request" system that handles complex states:
 * **Interactive Chat:** Optimized frontend for sending and receiving messages instantly.
 * **State Management:** Logic to handle message replies and real-time UI updates without page reloads.
 
-## 🛠 Tech Stack
+## Tech Stack
 * **Backend:** Python, Django (Models, Views, and Auth)
 * **Database:** MySQL / SQLite (Relational mapping for Friendships)
 * **Frontend:** HTML5, CSS3, JavaScript, Bootstrap 5
